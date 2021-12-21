@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/cities_dest">
+
+    <fragment
+        android:id="@+id/cities_dest"
+        android:name="com.example.weatherapp.cities.ui.CitiesFragment"
+        android:label="CitiesFragment"
+        tools:layout="@layout/fragment_cities" >
+        <action
+            android:id="@+id/action_cities_dest_to_details_dest"
+            app:destination="@id/details_dest" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_weather_details"
+        android:id="@+id/details_dest"
+        android:name="com.example.weatherapp.weatherdetails.ui.WeatherDetailsFragment"
+        android:label="WeatherDetailsFragment" >
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+    </fragment>
+</navigation>

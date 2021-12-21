@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+
+    <string name="temp">%1s°C</string>
+    <string name="minMaxTemp">%1s  -  %1s °C</string>
+    <string name="windSpeed">%1s km/h</string>
+    <string name="pressure">%1s mbar</string>
+    <string name="precent">%1s%%</string>
+    <string name="visibility">%1s km</string>
+
+    <string name="dateLabel">Date</string>
+    <string name="windSpeedLabel">Wind speed</string>
+    <string name="pressureLabel">Pressure</string>
+    <string name="humidityLabel">Humidity</string>
+    <string name="visibilityLabel">Visibility</string>
+    <string name="predictabilityLabel">Predictability</string>
+    <string name="errorMessage">Oops! there is an error</string>
+</resources>

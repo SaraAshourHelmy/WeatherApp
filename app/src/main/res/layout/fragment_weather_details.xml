@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loadingWeatherDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cityNameValue"
+        style="@style/TextAppearance.App.Headline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Stockholm" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/weatherDetailsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_default">
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tempValue"
+                    style="@style/TextAppearance.App.Headline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_default"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="3.0°C" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/weatherStateName"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tempValue"
+                    tools:text="Thunder" />
+
+                <!--      date row      -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/dateLabel"
+                    style="@style/TextAppearance.App.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/dateLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weatherStateName" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/dateValue"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintStart_toEndOf="@+id/dateLabel"
+                    app:layout_constraintTop_toTopOf="@+id/dateLabel"
+                    tools:text="2021-12-16" />
+
+                <!-- wind speed row -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/windSpeedLabel"
+                    style="@style/TextAppearance.App.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/windSpeedLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/windSpeedValue"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintStart_toEndOf="@+id/windSpeedLabel"
+                    app:layout_constraintTop_toTopOf="@+id/windSpeedLabel"
+                    tools:text="2.5 km/h" />
+
+                <!--  pressure row  -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/pressureLabel"
+                    style="@style/TextAppearance.App.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/pressureLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/windSpeedLabel" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/pressureValue"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintStart_toEndOf="@+id/pressureLabel"
+                    app:layout_constraintTop_toTopOf="@+id/pressureLabel"
+                    tools:text="1025.0 mbar" />
+
+                <!--  humidity row -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/humidityLabel"
+                    style="@style/TextAppearance.App.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/humidityLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pressureLabel" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/humidityValue"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintStart_toEndOf="@+id/humidityLabel"
+                    app:layout_constraintTop_toTopOf="@+id/humidityLabel"
+                    tools:text="85%" />
+
+                <!--  visibility row -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/visibilityLabel"
+                    style="@style/TextAppearance.App.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/visibilityLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/humidityLabel" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/visibilityValue"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintStart_toEndOf="@+id/visibilityLabel"
+                    app:layout_constraintTop_toTopOf="@+id/visibilityLabel"
+                    tools:text="14.2 km" />
+
+                <!--   predictability row -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/predictabilityLabel"
+                    style="@style/TextAppearance.App.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/predictabilityLabel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/visibilityLabel" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/predictabilityValue"
+                    style="@style/TextAppearance.App.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    app:layout_constraintStart_toEndOf="@+id/predictabilityLabel"
+                    app:layout_constraintTop_toTopOf="@+id/predictabilityLabel"
+                    tools:text="80%" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:background="@color/primary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/predictabilityLabel" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/weatherImage"
+                    android:layout_width="@dimen/weather_icon_size"
+                    android:layout_height="@dimen/weather_icon_size"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider"
+                    tools:src="@drawable/ic_launcher_background" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/minMaxTemp"
+                    style="@style/TextAppearance.App.Headline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_default"
+                    app:layout_constraintBottom_toTopOf="@id/weatherImage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weatherImage"
+                    tools:text="2 - 5 °C" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
