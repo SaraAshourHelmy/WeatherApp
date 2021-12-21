@@ -21,12 +21,14 @@ class WeatherDetailsRepositoryTest {
     private val repository = WeatherDetailsRepository(weatherDetailsService)
     private val city = "London"
     private val weatherDetailsModel: WeatherDetailsModel = mock()
-    private val loading: Loadable.Loading = mock()
-    private val error: Loadable.Error = mock()
+    private val successResponse = Loadable.Success(weatherDetailsModel)
+    private val loadingResponse: Loadable.Loading = mock()
+    private val errorResponse: Loadable.Error = mock()
 
     @ExperimentalCoroutinesApi
     @Test
     fun `when fetch weather details - then get weather data from service`() = runBlockingTest {
+        mockSuccessResponse()
         repository.fetchWeatherDetails(city)
         verify(weatherDetailsService, times(1)).fetchWeatherDetails(city)
     }
@@ -34,10 +36,10 @@ class WeatherDetailsRepositoryTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `when fetch weather details successfully - then get weather entity `() = runBlockingTest {
+    fun `when fetch weather details - then get weather model successfully`() = runBlockingTest {
         mockSuccessResponse()
         val actualResponse = repository.fetchWeatherDetails(city)
-        Assert.assertEquals(Loadable.Success(weatherDetailsModel), actualResponse.first())
+        Assert.assertEquals(successResponse, actualResponse.first())
     }
 
     @ExperimentalCoroutinesApi
@@ -45,7 +47,7 @@ class WeatherDetailsRepositoryTest {
     fun `when start fetching weather details - then get loading response`() = runBlockingTest {
         mockLoadingResponse()
         val actualResponse = repository.fetchWeatherDetails(city)
-        Assert.assertEquals(loading, actualResponse.first())
+        Assert.assertEquals(loadingResponse, actualResponse.first())
 
     }
 
@@ -55,7 +57,7 @@ class WeatherDetailsRepositoryTest {
         runBlockingTest {
             mockErrorResponse()
             val actualResponse = repository.fetchWeatherDetails(city)
-            Assert.assertEquals(error, actualResponse.first())
+            Assert.assertEquals(errorResponse, actualResponse.first())
 
         }
 
@@ -63,17 +65,16 @@ class WeatherDetailsRepositoryTest {
     private fun mockSuccessResponse() = runBlockingTest {
         whenever(weatherDetailsService.fetchWeatherDetails(city)).thenReturn(
             flow {
-                emit(Loadable.Success(weatherDetailsModel))
+                emit(successResponse)
             }
         )
     }
-
 
     @ExperimentalCoroutinesApi
     private fun mockLoadingResponse() = runBlockingTest {
         whenever(weatherDetailsService.fetchWeatherDetails(city)).thenReturn(
             flow {
-                emit(loading)
+                emit(loadingResponse)
             }
         )
     }
@@ -82,7 +83,7 @@ class WeatherDetailsRepositoryTest {
     private fun mockErrorResponse() = runBlockingTest {
         whenever(weatherDetailsService.fetchWeatherDetails(city)).thenReturn(
             flow {
-                emit(error)
+                emit(errorResponse)
             }
         )
     }

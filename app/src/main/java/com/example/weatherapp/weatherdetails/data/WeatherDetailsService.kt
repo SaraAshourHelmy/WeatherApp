@@ -13,14 +13,14 @@ class WeatherDetailsService @Inject constructor(private val weatherApi: WeatherA
     suspend fun fetchWeatherDetails(city: String): Flow<Loadable<WeatherDetailsModel>> {
         return flow {
             emit(Loadable.Loading)
-            val weatherEntity = fetchWeatherEntity(city)
+            val weatherEntity = fetchCityTomorrowWeather(city)
             emit(Loadable.Success(weatherEntity))
         }.catch {
             emit(Loadable.Error)
         }
     }
 
-    private suspend fun fetchWeatherEntity(city: String): WeatherDetailsModel {
+    private suspend fun fetchCityTomorrowWeather(city: String): WeatherDetailsModel {
         val cityModelList = weatherApi.fetchCityModel(city)
         val weatherDetailsModel = weatherApi.fetchWeatherDetails(cityModelList[0].id)
         return weatherDetailsModel.weatherDetailsList[1]

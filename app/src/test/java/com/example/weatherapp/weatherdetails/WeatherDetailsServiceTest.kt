@@ -35,15 +35,16 @@ class WeatherDetailsServiceTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `when fetch weather details  - then call fetch city model from weather api`() =
+    fun `when fetch weather details  - then call fetchCityModel from weather api`() =
         runBlockingTest {
+            mockSuccessResponse()
             service.fetchWeatherDetails(city).collect()
             verify(weatherApi, times(1)).fetchCityModel(city)
         }
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `when fetch weather details  - then call fetch weather details from weather api`() =
+    fun `when fetch weather details  - then call fetchWeatherDetails from weather api`() =
         runBlockingTest {
             mockSuccessResponse()
             service.fetchWeatherDetails(city).collect()

@@ -25,9 +25,9 @@ class WeatherDetailsViewModel(
     val hasErrorLiveData: LiveData<Boolean>
         get() = _hasErrorLiveData
 
-    private var _weatherModelLiveData = MutableLiveData<WeatherViewState>()
+    private var _weatherViewStateLiveData = MutableLiveData<WeatherViewState>()
     val weatherViewStateLiveData: LiveData<WeatherViewState>
-        get() = _weatherModelLiveData
+        get() = _weatherViewStateLiveData
 
     fun fetchWeatherDetails(city: String) {
         viewModelScope.launch {
@@ -45,13 +45,13 @@ class WeatherDetailsViewModel(
     private fun getWeatherResponse(loadable: Loadable<WeatherDetailsModel>) {
         when (loadable) {
             is Loadable.Loading -> showLoading()
-            is Loadable.Success -> mapEntityToWeatherModel(loadable.data)
+            is Loadable.Success -> mapModelToWeatherViewState(loadable.data)
             is Loadable.Error -> showError()
         }
     }
 
-    private fun mapEntityToWeatherModel(detailsModel: WeatherDetailsModel) {
-        _weatherModelLiveData.value = weatherDetailsMapper.mapToWeatherViewState(detailsModel)
+    private fun mapModelToWeatherViewState(detailsModel: WeatherDetailsModel) {
+        _weatherViewStateLiveData.value = weatherDetailsMapper.mapToWeatherViewState(detailsModel)
     }
 
     private fun showLoading() {
@@ -65,6 +65,4 @@ class WeatherDetailsViewModel(
     private fun showError() {
         _hasErrorLiveData.value = true
     }
-
-
 }

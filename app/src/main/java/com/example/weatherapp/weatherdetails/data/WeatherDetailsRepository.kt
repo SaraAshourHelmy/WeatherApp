@@ -10,5 +10,4 @@ class WeatherDetailsRepository @Inject constructor(private val weatherDetailsSer
    suspend fun fetchWeatherDetails(city: String): Flow<Loadable<WeatherDetailsModel>> {
         return weatherDetailsService.fetchWeatherDetails(city)
     }
-
 }

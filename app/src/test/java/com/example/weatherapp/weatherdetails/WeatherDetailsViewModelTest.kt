@@ -2,7 +2,6 @@ package com.example.weatherapp.weatherdetails
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.weatherapp.utils.MainCoroutineScopeRule
-import com.example.weatherapp.utils.captureValues
 import com.example.weatherapp.utils.getValueForTest
 import com.example.weatherapp.weatherdetails.data.WeatherDetailsMapper
 import com.example.weatherapp.weatherdetails.data.WeatherDetailsRepository
@@ -75,20 +74,16 @@ class WeatherDetailsViewModelTest {
     @Test
     fun `when start fetching weather details - then show loading`() = runBlockingTest {
         mockLoadingResponse()
-        viewModel.loadingLiveData.captureValues {
-            viewModel.fetchWeatherDetails(city)
-            Assert.assertEquals(true, values[0])
-        }
+        viewModel.fetchWeatherDetails(city)
+        Assert.assertTrue(viewModel.loadingLiveData.getValueForTest()!!)
     }
 
     @ExperimentalCoroutinesApi
     @Test
     fun `when start completing weather details - then hide loading`() = runBlockingTest {
         mockSuccessResponse()
-        viewModel.loadingLiveData.captureValues {
-            viewModel.fetchWeatherDetails(city)
-            Assert.assertEquals(false, values.first())
-        }
+        viewModel.fetchWeatherDetails(city)
+        Assert.assertFalse(viewModel.loadingLiveData.getValueForTest()!!)
     }
 
     @ExperimentalCoroutinesApi
@@ -96,9 +91,7 @@ class WeatherDetailsViewModelTest {
     fun `when fetch weather details and it has an error - then show error`() = runBlockingTest {
         mockErrorResponse()
         viewModel.fetchWeatherDetails(city)
-        val actualResult = viewModel.hasErrorLiveData.getValueForTest()
-        Assert.assertEquals(true, actualResult)
-
+        Assert.assertTrue(viewModel.hasErrorLiveData.getValueForTest()!!)
     }
 
     @ExperimentalCoroutinesApi
@@ -108,7 +101,9 @@ class WeatherDetailsViewModelTest {
                 emit(Loadable.Success(weatherDetailsModel))
             }
         )
-        whenever(weatherDetailsMapper.mapToWeatherViewState(weatherDetailsModel)).thenReturn(weatherViewState)
+        whenever(weatherDetailsMapper.mapToWeatherViewState(weatherDetailsModel)).thenReturn(
+            weatherViewState
+        )
     }
 
     @ExperimentalCoroutinesApi
@@ -128,5 +123,4 @@ class WeatherDetailsViewModelTest {
             }
         )
     }
-
 }
