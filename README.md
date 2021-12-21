@@ -7,3 +7,18 @@ following six cities:
 - London
 - New York
 - Berlin
+
+
+# Technologies
+This application is using :
+- Kotlin flow, Kotlin coroutines.
+- mockito for testing.
+- hilt for dependency injection.
+- architecture component (viewModel - liveData - navigation component).
+- retrofit for network.
+- piccaso for loading images.
+- android material design.
+- 
+
+# Setup
+ Close the app and run it on Android Studio.
