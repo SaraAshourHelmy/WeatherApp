@@ -18,6 +18,7 @@ This application is using :
 - retrofit for network.
 - piccaso for loading images.
 - android material design.
+- MVVM architecture.
 
 
 # Setup
