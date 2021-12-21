@@ -53,7 +53,7 @@ class WeatherDetailsViewModelTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `when fetch weather details successfully - then map the entity to weatherModel`() =
+    fun `when fetch weather details successfully - then map the weatherModel to weatherViewState`() =
         runBlockingTest {
             mockSuccessResponse()
             viewModel.fetchWeatherDetails(city)
@@ -66,9 +66,9 @@ class WeatherDetailsViewModelTest {
         runBlockingTest {
             mockSuccessResponse()
             viewModel.fetchWeatherDetails(city)
-            val actualWeatherModel = viewModel.weatherViewStateLiveData.getValueForTest()
+            val actualWeatherViewState = viewModel.weatherViewStateLiveData.getValueForTest()
 
-            Assert.assertEquals(weatherViewState, actualWeatherModel)
+            Assert.assertEquals(weatherViewState, actualWeatherViewState)
         }
 
     @ExperimentalCoroutinesApi
@@ -87,7 +87,7 @@ class WeatherDetailsViewModelTest {
         mockSuccessResponse()
         viewModel.loadingLiveData.captureValues {
             viewModel.fetchWeatherDetails(city)
-            Assert.assertEquals(false, values.last())
+            Assert.assertEquals(false, values.first())
         }
     }
 

@@ -37,7 +37,6 @@ class CitiesFragment : Fragment() {
 
     private fun setupCityList() {
         val layoutManager = GridLayoutManager(context, 2)
-       // layoutManager.stackFromEnd = true
         binding.cityList.layoutManager = layoutManager
 
     }

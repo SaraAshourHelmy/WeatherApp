@@ -215,15 +215,13 @@
                     android:layout_marginEnd="@dimen/margin_large"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider"
-                    tools:src="@drawable/ic_launcher_background" />
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/minMaxTemp"
                     style="@style/TextAppearance.App.Headline1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_default"
                     app:layout_constraintBottom_toTopOf="@id/weatherImage"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/weatherImage"

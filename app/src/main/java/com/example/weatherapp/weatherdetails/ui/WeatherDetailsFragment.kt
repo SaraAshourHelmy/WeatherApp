@@ -22,7 +22,7 @@ class WeatherDetailsFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: WeatherDetailsViewModelFactory
-    
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

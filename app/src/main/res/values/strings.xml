@@ -2,7 +2,7 @@
     <string name="app_name">WeatherApp</string>
 
     <string name="temp">%1s°C</string>
-    <string name="minMaxTemp">%1s  -  %1s °C</string>
+    <string name="minMaxTemp">%1s — %1s °C</string>
     <string name="windSpeed">%1s km/h</string>
     <string name="pressure">%1s mbar</string>
     <string name="precent">%1s%%</string>

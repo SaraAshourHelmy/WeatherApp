@@ -30,19 +30,23 @@ class CitiesViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `when fetch cities - then get cities from repository`() {
-        whenever(citiesRepository.fetchCities()).thenReturn(cityListResult)
+        mockFetchCityList()
         verify(citiesRepository, times(1)).fetchCities()
     }
 
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `when fetch cities - then get the city list`() {
-        whenever(citiesRepository.fetchCities()).thenReturn(cityListResult)
+    fun `when fetch cities - then get the city list successfully`() {
+        mockFetchCityList()
         citiesViewModel.fetchCities()
         val actualCities = citiesViewModel.citiesLiveData.getValueForTest()
 
         Assert.assertEquals(cityListResult, actualCities)
+    }
+
+    private fun mockFetchCityList() {
+        whenever(citiesRepository.fetchCities()).thenReturn(cityListResult)
     }
 
 

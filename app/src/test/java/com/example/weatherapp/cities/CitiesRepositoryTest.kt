@@ -9,7 +9,7 @@ class CitiesRepositoryTest {
     private val citiesRepository = CitiesRepository()
 
     @Test
-    fun `when fetch cities - then get city list`() {
+    fun `when fetch cities - then get city list successfully`() {
         val expectedCities = listOf(
             "Gothenburg",
             "Stockholm",
