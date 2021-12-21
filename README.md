@@ -14,7 +14,7 @@ This application is using :
 - Kotlin flow, Kotlin coroutines.
 - mockito for testing.
 - hilt for dependency injection.
-- architecture component (viewModel - liveData - navigation component).
+- android architecture component (viewModel - liveData - navigation component).
 - retrofit for network.
 - piccaso for loading images.
 - android material design.
