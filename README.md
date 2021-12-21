@@ -18,7 +18,7 @@ This application is using :
 - retrofit for network.
 - piccaso for loading images.
 - android material design.
-- 
+
 
 # Setup
- Close the app and run it on Android Studio.
+ Clone the app and run it on Android Studio.
